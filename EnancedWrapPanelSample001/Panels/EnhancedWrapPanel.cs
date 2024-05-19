@@ -15,7 +15,6 @@ namespace EnancedWrapPanelSample001.Panels
     public class EnhancedWrapPanel : WrapPanel
     {
 
-
         public static readonly DependencyProperty HorizontalDirectionProperty = DependencyProperty.Register(nameof(HorizontalDirection), typeof(HorizontalDirection), typeof(EnhancedWrapPanel), new FrameworkPropertyMetadata(HorizontalDirection.LeftToRight, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
 
         public static readonly DependencyProperty VerticalDirectionProperty = DependencyProperty.Register(nameof(VerticalDirection), typeof(VerticalDirection), typeof(EnhancedWrapPanel), new FrameworkPropertyMetadata(VerticalDirection.TopToBottom, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
