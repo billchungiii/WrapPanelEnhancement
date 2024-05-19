@@ -4,9 +4,105 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnancedWrapPanelSample001"
+        xmlns:controls="clr-namespace:EnancedWrapPanelSample001.Panels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext >
+        <local:MainViewModel />
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding Items}"  Background="SkyBlue" x:Name="board">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:EnhancedWrapPanel x:Name="board">
+                        <controls:EnhancedWrapPanel.Style >
+                            <Style TargetType="controls:EnhancedWrapPanel">
+                                <Setter Property="Orientation" Value="Horizontal"/>
+                                <Setter Property="HorizontalDirection" Value="LeftToRight"/>
+                                <Setter Property="VerticalDirection" Value="TopToBottom"/>
+                                <Setter Property="IsLineOrderByDescending" Value="False"/>
+                                <Setter Property="IsItemsOrderByDescending" Value="False"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=vertical, Path=IsChecked}" Value="True">
+                                        <Setter Property="Orientation" Value="Vertical"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=right, Path=IsChecked}" Value="True">
+                                        <Setter Property="HorizontalDirection" Value="RightToLeft"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=bottom, Path=IsChecked}" Value="True">
+                                        <Setter Property="VerticalDirection" Value="BottomToTop"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=lineDesc, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsLineOrderByDescending" Value="True"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=itemsDesc, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsItemsOrderByDescending" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:EnhancedWrapPanel.Style>
+                    </controls:EnhancedWrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate >
+                    <Border Margin="6" BorderBrush="YellowGreen" BorderThickness="3" Width="120" >
+                        <TextBlock Text="{Binding}" FontSize="15" FontWeight="Bold" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel.Resources >
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="6"/>
+                    <Setter Property="Width" Value="72"/>
+                    <Setter Property="Height" Value="36"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Add" Command="{Binding AddCommand}"/>
+            <Button Content="Clear" Command="{Binding ClearCommand}"/>
+        </StackPanel>
 
+        <Grid Grid.Row="3">
+            <Grid.Resources>
+                <Style TargetType="StackPanel" >
+                    <Setter Property="Orientation" Value="Vertical"/>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel >
+                <RadioButton Content="Horizantal" IsChecked="True" x:Name="horizantal"/>
+                <RadioButton Content="Vertical" x:Name="vertical"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" >
+                <RadioButton Content="LeftToRight" IsChecked="True" x:Name="left"/>
+                <RadioButton Content="RightToLeft" x:Name="right"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" >
+                <RadioButton Content="TopToBottom" IsChecked="True" x:Name="top"/>
+                <RadioButton Content="BottomToTop" x:Name="bottom"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3" >
+                <RadioButton Content="LineOrder" IsChecked="True" x:Name="lineOrder"/>
+                <RadioButton Content="LineDescOrder" x:Name="lineDesc"/>
+            </StackPanel>
+            <StackPanel Grid.Column="4" >
+                <RadioButton Content="ItemsOrder" IsChecked="True" x:Name="itemsOrder"/>
+                <RadioButton Content="ItemsDescOrder" x:Name="itemsDesc"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
