@@ -88,8 +88,11 @@ namespace EnancedWrapPanelSample001.Panels
 
             UVSize curLineSize = new UVSize(Orientation);
             UVSize uvFinalSize = new UVSize(Orientation, finalSize.Width, finalSize.Height);
-            bool itemWidthSet = !WPFDoubleUtil.IsNaN(itemWidth);
-            bool itemHeightSet = !WPFDoubleUtil.IsNaN(itemHeight);
+            //bool itemWidthSet = !WPFDoubleUtil.IsNaN(itemWidth);
+            //bool itemHeightSet = !WPFDoubleUtil.IsNaN(itemHeight);
+
+            bool itemWidthSet = !double.IsNaN(itemWidth);
+            bool itemHeightSet = !double.IsNaN(itemHeight);
             bool useItemU = Orientation == Orientation.Horizontal ? itemWidthSet : itemHeightSet;
             List<FrameworkElement> children = RetriveAllChildren();
 

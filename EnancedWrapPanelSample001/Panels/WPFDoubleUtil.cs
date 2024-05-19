@@ -244,15 +244,16 @@ namespace EnancedWrapPanelSample001.Panels
 
         /// <summary>
         /// rectHasNaN - this returns true if this rect has X, Y , Height or Width as NaN.
+        /// Bill  2024/5/19 註 : 改用 Double.IsNaN，詳情看此類別的 IsNaN 方法上的說明
         /// </summary>
         /// <param name='r'>The rectangle to test</param>
         /// <returns>returns whether the Rect has NaN</returns>        
         public static bool RectHasNaN(Rect r)
         {
-            if (IsNaN(r.X)
-                 || IsNaN(r.Y)
-                 || IsNaN(r.Height)
-                 || IsNaN(r.Width))
+            if (Double.IsNaN(r.X)
+                 || Double.IsNaN(r.Y)
+                 || Double.IsNaN(r.Height)
+                 || Double.IsNaN(r.Width))
             {
                 return true;
             }
@@ -273,7 +274,25 @@ namespace EnancedWrapPanelSample001.Panels
         // so please make sure to use WPFDoubleUtil.IsNaN() in performance sensitive code.
         // PS item that tracks the CLR improvement is DevDiv Schedule : 26916.
         // IEEE 754 : If the argument is any value in the range 0x7ff0000000000001L through 0x7fffffffffffffffL 
-        // or in the range 0xfff0000000000001L through 0xffffffffffffffffL, the result will be NaN.         
+        // or in the range 0xfff0000000000001L through 0xffffffffffffffffL, the result will be NaN.
+
+        // Bill 2024/5/19 註 : 上面的說法可能是以前的 .NET Framework 的狀況，所以請改用內建的 Double.IsNaN  
+        // 附上測試紀錄
+        /*
+         * .NET 8 X64
+           | Method              | Mean      | Error     | StdDev    | Median    |
+           |-------------------- |----------:|----------:|----------:|----------:|
+           | WPFDoubleUtil.IsNaN | 3.3718 ns | 0.0288 ns | 0.0255 ns | 3.3776 ns |
+           | System.Double.IsNaN | 0.0010 ns | 0.0025 ns | 0.0022 ns | 0.0000 ns |
+
+           .NET Framework 4.8 x64
+           | Method              | Mean     | Error     | StdDev    |
+           |-------------------- |---------:|----------:|----------:|
+           | WPFDoubleUtil.IsNaN | 3.469 ns | 0.0992 ns | 0.1657 ns |
+           | System.Double.IsNaN | 1.446 ns | 0.0185 ns | 0.0164 ns |
+           
+         */
+        [Obsolete("Please use Double.IsNaN instead of this method. This method is slower than Double.IsNaN.")]
         public static bool IsNaN(double value)
         {
             NanUnion t = new NanUnion();
