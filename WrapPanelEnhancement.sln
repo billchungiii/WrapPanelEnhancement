@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnancedWrapPanelSample001", "EnancedWrapPanelSample001\EnancedWrapPanelSample001.csproj", "{3F6E897A-BC27-4129-B002-1B875B668C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnancedWrapPanelSample001", "EnancedWrapPanelSample001\EnancedWrapPanelSample001.csproj", "{3F6E897A-BC27-4129-B002-1B875B668C5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingLibrary", "BindingLibrary\BindingLibrary.csproj", "{45153A49-74DE-42A6-92BB-51907D48E438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingLibrary", "BindingLibrary\BindingLibrary.csproj", "{45153A49-74DE-42A6-92BB-51907D48E438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnancedWrapPanelSample002", "EnancedWrapPanelSample002\EnancedWrapPanelSample002.csproj", "{3FD6CB97-8E6D-49E8-80FE-E0F8B41B95A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{45153A49-74DE-42A6-92BB-51907D48E438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45153A49-74DE-42A6-92BB-51907D48E438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45153A49-74DE-42A6-92BB-51907D48E438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD6CB97-8E6D-49E8-80FE-E0F8B41B95A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD6CB97-8E6D-49E8-80FE-E0F8B41B95A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD6CB97-8E6D-49E8-80FE-E0F8B41B95A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD6CB97-8E6D-49E8-80FE-E0F8B41B95A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
