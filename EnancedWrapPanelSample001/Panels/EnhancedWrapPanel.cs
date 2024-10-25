@@ -71,12 +71,21 @@ namespace EnancedWrapPanelSample001.Panels
             set { SetValue(IsItemsOrderByDescendingProperty, value); }
         }
 
+
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            this.InvalidateArrange();
+        }
+
         protected override Size ArrangeOverride(Size finalSize)
         {
 
             finalSize = InternalArrang(finalSize);
             return finalSize;
         }
+
+
 
         private Size InternalArrang(Size finalSize)
         {
